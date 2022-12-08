@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 style="margin-top: 30px; ">Course</h1>
+
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" style=" width: 100%; ">
+                        <input matInput placeholder="Search" (keyup)="CourseFilter($event)">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                    <button mat-flat-button color="primary" style="width: 100%;">
+                        <mat-icon aria-label="label" matTooltip="Add Post" (click)="CourseAdd()">add</mat-icon>
+                    </button>
+                </div>
+                <div class="col-md-12">
+                    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                        <ng-container matColumnDef="Id">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Id
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let Courses"> {{Courses.Id}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Name">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Name
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let Courses"> {{Courses.Name}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="operations">
+                            <mat-header-cell *matHeaderCellDef> Operations
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let data">
+                                <button mat-icon-button>
+                                    <mat-icon class="primary" (click)="CourseUpdate(data)">edit</mat-icon>
+                                </button>
+                                <button mat-icon-button>
+                                    <mat-icon color="warn" matTooltip="" (click)="CourseRemove(data)">delete</mat-icon>
+                                </button>
+                            </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+                    <mat-paginator [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons="true">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

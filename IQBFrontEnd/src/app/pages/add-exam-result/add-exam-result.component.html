@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+            <div style="margin-left: 20px; width: 90%; ">
+                <p><b>Name Surname:</b> &nbsp; {{student.FullName}}</p>
+                <p><b>Number:</b> &nbsp; {{student.Number}}</p>
+                <p><b>Mail:</b>  &nbsp; {{student.Email}}</p>
+                <p><b>Gsm Number:</b> &nbsp; {{student.GsmNumber}}</p>
+            </div>
+            
+            <form>
+                <mat-form-field appearance="outline" style="margin-left: 20px; width: 90%; ">
+                    <mat-label>Course</mat-label>
+                    <mat-select [formControl]="toppings" #course>
+                        <mat-option *ngFor="let item of courses" [value]="item.Id">{{item.Name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="margin-left: 20px; width:  90%; ">
+                    <mat-label>Score</mat-label>
+                    <input matInput placeholder="Score" name="Score" type="number" #score>
+                </mat-form-field>
+                <button mat-raised-button color="primary" style="margin-left: 20px; width:  90%;"
+                    (click)="btnSaveClick(course.value,score.value )">Save
+                    Exam Result</button>
+            </form>
+        </div>
+    </div>
+</div>

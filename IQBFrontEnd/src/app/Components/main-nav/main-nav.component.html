@@ -1,0 +1,36 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+      <mat-toolbar>Menu</mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['/Student']"   >Student</a>
+        <a mat-list-item [routerLink]="['/Course']">Course</a>
+        <a mat-list-item router [routerLink]="['/ExamResult']">ExamResult</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="mat-elevation-z8">
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">Main Menu</mat-icon>
+        </button>
+        <span>IQB Solutions Technical Interview</span>
+        <span class="spacer"></span>
+        <!-- <button mat-button [routerLink]="['/login']" >Oturum Aç</button> -->
+        <!-- <button mat-button [routerLink]="['/kayitol']" >KayıtOl</button> -->
+        <!-- <button mat-button [matMenuTriggerFor]="menu"  ></button> -->
+        <!-- <button mat-button [matMenuTriggerFor]="adminmenu"  >AdminPaneli</button> -->
+        <!-- <button mat-button [matMenuTriggerFor]="adminmenu">Çıkış Yap</button> -->
+        <!-- <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]="['/anketbykullanici']">Anketlerim</button>
+          <button mat-menu-item [routerLink]="['/profil']">Profilim</button>
+        </mat-menu>
+        <mat-menu #adminmenu="matMenu">
+          <button mat-menu-item [routerLink]="['/kullanici']">Kullanıcılar</button>
+          <button mat-menu-item [routerLink]="['/anketbyadmin']">Bütün Anketler </button>
+        </mat-menu> -->
+      </mat-toolbar>
+      <!-- Add Content Here -->
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

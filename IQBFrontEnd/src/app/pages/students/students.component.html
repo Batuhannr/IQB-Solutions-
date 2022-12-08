@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 style="margin-top: 30px; ">Student</h1>
+        </div>
+        <div class="col-md-12">
+          <mat-form-field appearance="outline" style=" width: 100%; ">
+            <input matInput placeholder="Search" (keyup)="StudentFilter($event)">
+          </mat-form-field>
+        </div>
+        <div class="col-md-12">
+          <button mat-flat-button color="primary" style="width: 100%;">
+            <mat-icon aria-label="label" matTooltip="Add Post" (click)="StudentAdd()">add</mat-icon>
+          </button>
+        </div>
+        <div class="col-md-12">
+          <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+            <ng-container matColumnDef="Id">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Id
+              </mat-header-cell>
+              <mat-cell *matCellDef="let Students"> {{Students.Id}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Email">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Email
+              </mat-header-cell>
+              <mat-cell *matCellDef="let Students"> {{Students.Email}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="FullName">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> FullName
+              </mat-header-cell>
+              <mat-cell *matCellDef="let Students"> {{Students.FullName}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="GsmNumber">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> GsmNumber
+              </mat-header-cell>
+              <mat-cell *matCellDef="let Students"> {{Students.GsmNumber}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Number">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Number
+              </mat-header-cell>
+              <mat-cell *matCellDef="let Students"> {{Students.Number}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="operations">
+              <mat-header-cell *matHeaderCellDef> Operations
+              </mat-header-cell>
+              <mat-cell *matCellDef="let data">
+                <button mat-icon-button>
+                  <mat-icon aria-label="label" class="primary" matTooltip="" (click)="StudentUpdate(data)">edit
+                  </mat-icon>
+                </button>
+                <button mat-icon-button>
+                  <mat-icon aria-label="label" color="warn" matTooltip="" (click)="StudentRemove(data)">delete
+                  </mat-icon>
+                </button>
+                <button mat-icon-button>
+                  <mat-icon aria-label="label" style="color: green;" matTooltip="" (click)="navigateToPost(data)">add
+                  </mat-icon>
+                </button>
+                <button mat-icon-button>
+                  <mat-icon aria-label="label" style="color: blue;" matTooltip="" (click)="StudentInfo(data)">info
+                  </mat-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+          <mat-paginator [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons="true">
+          </mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

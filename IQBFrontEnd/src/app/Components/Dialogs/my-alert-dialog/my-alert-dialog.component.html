@@ -1,0 +1,12 @@
+<mat-toolbar [color]="dialogOperation ?'primary': 'warn'" class="mat-elevation-z8">
+    <span>{{dialogHeader}}</span>
+  </mat-toolbar>
+  <div class="container">
+    <p *ngFor="let item of dialogMessage">
+        <br/>
+        {{item}}
+    </p>
+    
+    
+  </div>
+  <button mat-raised-button [color]="dialogOperation ?'primary': 'warn'" (click)="dialogRef.close()">Close</button>

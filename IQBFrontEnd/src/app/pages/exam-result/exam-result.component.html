@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 style="margin-top: 30px; ">ExamResult</h1>
+
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline" style=" width: 100%; ">
+                        <input matInput placeholder="Search" (keyup)="ExamResultFilter($event)">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-12">
+                    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                        <ng-container matColumnDef="ExamResultId">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Id
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let AllLists" [ngClass]="{'comp': AllLists.Score >=3}">
+                                {{AllLists.ExamResultId}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="StudentName">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Name
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let AllLists" [ngClass]="{'comp': AllLists.Score >=3}">
+                                {{AllLists.StudentName}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="StudentNumber">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Number
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let AllLists" [ngClass]="{'comp': AllLists.Score >=3}">
+                                {{AllLists.StudentNumber}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="StudentMail">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Mail
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let AllLists" [ngClass]="{'comp': AllLists.Score >=3}">
+                                {{AllLists.StudentMail}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="StudentGs">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> GSN
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let AllLists" [ngClass]="{'comp': AllLists.Score >=3}">
+                                {{AllLists.StudentGs}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="CourseName">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Course Name
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let AllLists" [ngClass]="{'comp': AllLists.Score >=3}">
+                                {{AllLists.CourseName}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Score">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Score
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let AllLists" [ngClass]="{'comp': AllLists.Score >=3}">
+                                {{AllLists.Score}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="operations">
+                            <mat-header-cell *matHeaderCellDef> Operations
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let data" [ngClass]="{'comp': data.Score >=3}">
+                                <button mat-icon-button>
+                                    <mat-icon aria-label="label" color="warn" matTooltip=""
+                                        (click)="ExamResultRemove(data)">delete</mat-icon>
+                                </button>
+                            </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+                    <mat-paginator [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons="true">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
